@@ -456,7 +456,7 @@ function extractEmails(str) {
  */
 function encodeToRot13(str) {
   const my = str;
-  console.log(my);
+  return my;
 }
 
 /**
