@@ -5,7 +5,6 @@
  *                                                                                           *
  ******************************************************************************************* */
 
-
 /**
  * Returns the length of the given string.
  *
@@ -165,7 +164,9 @@ function removeFirstOccurrences(str, value) {
  */
 function removeLastOccurrences(str, value) {
   const lastIndex = str.lastIndexOf(value);
-  return lastIndex === -1 ? str : str.slice(0, lastIndex) + str.slice(lastIndex + value.length);
+  return lastIndex === -1
+    ? str
+    : str.slice(0, lastIndex) + str.slice(lastIndex + value.length);
 }
 
 /**
@@ -243,9 +244,8 @@ function formatTime(minutes, seconds) {
  *   reverseString('12345') => '54321'
  */
 function reverseString(str) {
-    return str.split('').reverse().join('');
+  return str.split('').reverse().join('');
 }
-
 
 /**
  * Returns a string with characters in alphabetical order.
@@ -259,7 +259,7 @@ function reverseString(str) {
  *   orderAlphabetically('abc123xyz') => '123abcxyz'
  */
 function orderAlphabetically(str) {
-    return str.split('').sort().join('');
+  return str.split('').sort().join('');
 }
 
 /**
@@ -275,7 +275,7 @@ function orderAlphabetically(str) {
  *   containsSubstring('12345', '34') => true
  */
 function containsSubstring(str, substring) {
-    return str.includes(substring);
+  return str.includes(substring);
 }
 
 /**
@@ -293,10 +293,9 @@ function containsSubstring(str, substring) {
  *   countVowels('XYZ') => 1
  */
 function countVowels(str) {
-    const vowels = 'aeiouyAEIOUY';
-    return str.split('').filter(char => vowels.includes(char)).length;
+  const vowels = 'aeiouyAEIOUY';
+  return str.split('').filter((char) => vowels.includes(char)).length;
 }
-
 
 /**
  * Returns true if the string is a palindrome; otherwise false.
@@ -312,10 +311,9 @@ function countVowels(str) {
  *   isPalindrome('No lemon, no melon') => true
  */
 function isPalindrome(str) {
-    const cleanStr = str.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
-    return cleanStr === cleanStr.split('').reverse().join('');
+  const cleanStr = str.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+  return cleanStr === cleanStr.split('').reverse().join('');
 }
-
 
 /**
  * Find the longest word in the sentence. If there are multiple longest words,
@@ -330,9 +328,13 @@ function isPalindrome(str) {
  *   findLongestWord('No words here') => 'words'
  */
 function findLongestWord(sentence) {
-    return sentence.split(/\s+/).reduce((longest, word) => word.length > longest.length ? word : longest, '');
+  return sentence
+    .split(/\s+/)
+    .reduce(
+      (longest, word) => (word.length > longest.length ? word : longest),
+      ''
+    );
 }
-
 
 /**
  * Returns the string where each word is reversed.
@@ -345,7 +347,10 @@ function findLongestWord(sentence) {
  *   reverseWords('The Quick Brown Fox') => 'ehT kciuQ nworB xoF'
  */
 function reverseWords(str) {
-    return str.split(' ').map(word => word.split('').reverse().join('')).join(' ');
+  return str
+    .split(' ')
+    .map((word) => word.split('').reverse().join(''))
+    .join(' ');
 }
 
 /**
@@ -360,11 +365,13 @@ function reverseWords(str) {
  *   invertCase('12345') => '12345'
  */
 function invertCase(str) {
-    return str.split('').map(char =>
-        char === char.toLowerCase() ? char.toUpperCase() : char.toLowerCase()
-    ).join('');
+  return str
+    .split('')
+    .map((char) =>
+      char === char.toLowerCase() ? char.toUpperCase() : char.toLowerCase()
+    )
+    .join('');
 }
-
 
 /**
  * Returns the result of string template and given parameters firstName and lastName.
@@ -380,9 +387,8 @@ function invertCase(str) {
  *   getStringFromTemplate('Chuck','Norris') => 'Hello, Chuck Norris!'
  */
 function getStringFromTemplate(firstName, lastName) {
-    return `Hello, ${firstName} ${lastName}!`;
+  return `Hello, ${firstName} ${lastName}!`;
 }
-
 
 /**
  * Extracts a name from template string 'Hello, First_Name Last_Name!'.
@@ -395,9 +401,8 @@ function getStringFromTemplate(firstName, lastName) {
  *   extractNameFromTemplate('Hello, Chuck Norris!') => 'Chuck Norris'
  */
 function extractNameFromTemplate(value) {
-    return value.replace('Hello, ', '').replace('!', '');
+  return value.replace('Hello, ', '').replace('!', '');
 }
-
 
 /**
  * Remove the first and last angle brackets from tag string
@@ -411,9 +416,8 @@ function extractNameFromTemplate(value) {
  *   unbracketTag('<a>') => 'a'
  */
 function unbracketTag(str) {
-    return str.slice(1, -1);
+  return str.slice(1, -1);
 }
-
 
 /**
  * Extracts e-mails from single string with e-mails list delimited by semicolons
@@ -431,9 +435,8 @@ function unbracketTag(str) {
  *   'info@gmail.com' => ['info@gmail.com']
  */
 function extractEmails(str) {
-    return str.split(';');
+  return str.split(';');
 }
-
 
 /**
  * Encode specified string with ROT13 cipher
@@ -452,9 +455,9 @@ function extractEmails(str) {
  *
  */
 function encodeToRot13(str) {
-
+  const my = str;
+  console.log(my);
 }
-
 
 /**
  * Returns playid card id.
@@ -481,13 +484,26 @@ function encodeToRot13(str) {
  *   'K♠' => 51
  */
 function getCardId(value) {
-    const suits = ['♣', '♦', '♥', '♠'];
-    const ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
-    const suit = value.slice(-1);
-    const rank = value.slice(0, -1);
-    return suits.indexOf(suit) * ranks.length + ranks.indexOf(rank);
+  const suits = ['♣', '♦', '♥', '♠'];
+  const ranks = [
+    'A',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '10',
+    'J',
+    'Q',
+    'K',
+  ];
+  const suit = value.slice(-1);
+  const rank = value.slice(0, -1);
+  return suits.indexOf(suit) * ranks.length + ranks.indexOf(rank);
 }
-
 
 module.exports = {
   getStringLength,
